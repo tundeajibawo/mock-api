@@ -17,7 +17,7 @@
                 "expire"
           ] 
     },
-    "stateId": { "int": {} },
+    "stateId": { "int": {"min": 0, "max": 1000000} },
     "city": { "string": {} },
     "billerId": { "belongsTo": "Biller" },
     "tickets": { "hasMany": "Ticket" }
@@ -44,9 +44,9 @@
             ] 
     },
     "ref": { "regexp": "[A-Z][a-z]{15,15}" },
-    "userId": { "int": {} },
-    "amount": { "int": {} },
-    "total": { "int": {} },
+    "userId": { "int": {"min": 0, "max": 1000000} },
+    "amount": { "int": {"min": 0, "max": 1000000} },
+    "total": { "int": {"min": 0, "max": 1000000} },
     "paymentResponse": { "string": [
                           "successful",
                           "failed"
@@ -56,18 +56,18 @@
   "Ticket": {
     "name": { "string": {} },
     "description": { "string": {} },
-    "amount": { "int": {} },
-    "quantity": { "int": {} },
-    "sold": { "int": {} },
-    "available": { "int": {} },
+    "amount": { "int": {"min": 0, "max": 1000000} },
+    "quantity": { "int": {"min": 0, "max": 1000000} },
+    "sold": { "int": {"min": 0, "max": 1000000} },
+    "available": { "int": {"min": 0, "max": 1000000} },
     "productId": {"belongsTo": "Product"},
     "productType": {"belongsTo": "Product"}
   },
   "Booking": {
     "session": { "regexp": "[A-Z][a-z]{8,8}" },
-    "userId": { "int": {} },
-    "amount": { "int": {} },
-    "quantity": { "int": {} },
+    "userId": { "int": {"min": 0, "max": 1000000} },
+    "amount": { "int": {"min": 0, "max": 1000000} },
+    "quantity": { "int": {"min": 0, "max": 1000000} },
     "status": { "string": [
                 "pending",
                 "booked",
@@ -75,15 +75,15 @@
             ] 
     },
     "billerId": { "belongsTo": "Biller" },
-    "bookingId": { "int": {} },
+    "bookingId": { "int": {"min": 0, "max": 1000000} },
     "ticketId": { "belongsTo": "Ticket" }
   },
   "Category": {
     "name": { "string": {} },
     "description": { "string": {} },
-    "mediaId": { "int": {} },
-    "secondaryMediaId": { "int": {} },
-    "categoryId": { "int": {} },
+    "mediaId": { "int": {"min": 0, "max": 1000000} },
+    "secondaryMediaId": { "int": {"min": 0, "max": 1000000} },
+    "categoryId": { "int": {"min": 0, "max": 1000000} },
     "comingSoon": { "boolean": {} },
     "newTab": { "boolean": {} },
     "status": { "string": ["publish"] },
