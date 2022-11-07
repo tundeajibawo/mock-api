@@ -1,4 +1,8 @@
 {
-  "Post": {},
-  "Comment": {}
+  "Product": {},
+  "Transaction": {},
+  "Ticket": {},
+  "Booking": {},
+  "Category": {},
+  "Biller": {}
 }
