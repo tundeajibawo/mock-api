@@ -1,4 +1,98 @@
 {
-  "Post": {},
-  "Comment": {}
+  "Product": {
+    "name": { "string": {} },
+    "description": { "string": {} },
+    "venue": { "string": {} },
+    "type": { "string": [
+              "event",
+              "access-ticket", 
+              "package",
+              "movie"
+        ] 
+    },
+    "status": { "string": [
+                "publish",
+                "draft", 
+                "cancel",
+                "expire"
+          ] 
+    },
+    "stateId": { "int": {} },
+    "city": { "string": {} },
+    "billerId": { "belongsTo": "Biller" },
+    "tickets": { "hasMany": "Ticket" }
+  },
+  "Transaction": {
+    "session": { "regexp": "[A-Z][a-z]{8,8}" },
+    "paymentStatus": { "string": [
+                      "payment-failed",
+                      "in-progress",
+                      "successful"
+                  ] 
+    },
+    "status": { "string": [
+                "pending",
+                "booked",
+                "failed",
+                "canceled"
+            ] 
+    },
+    "userType": { "string": [
+                "customer",
+                "agent",
+                "vendor"
+            ] 
+    },
+    "ref": { "regexp": "[A-Z][a-z]{15,15}" },
+    "userId": { "int": {} },
+    "amount": { "int": {} },
+    "total": { "int": {} },
+    "paymentResponse": { "string": [
+                          "successful",
+                          "failed"
+                      ] 
+    }
+  },
+  "Ticket": {
+    "name": { "string": {} },
+    "description": { "string": {} },
+    "amount": { "int": {} },
+    "quantity": { "int": {} },
+    "sold": { "int": {} },
+    "available": { "int": {} },
+    "productId": {"belongsTo": "Product"},
+    "productType": {"belongsTo": "Product"}
+  },
+  "Booking": {
+    "session": { "regexp": "[A-Z][a-z]{8,8}" },
+    "userId": { "int": {} },
+    "amount": { "int": {} },
+    "quantity": { "int": {} },
+    "status": { "string": [
+                "pending",
+                "booked",
+                "failed"
+            ] 
+    },
+    "billerId": { "belongsTo": "Biller" },
+    "bookingId": { "int": {} },
+    "ticketId": { "belongsTo": "Ticket" }
+  },
+  "Category": {
+    "name": { "string": {} },
+    "description": { "string": {} },
+    "mediaId": { "int": {} },
+    "secondaryMediaId": { "int": {} },
+    "categoryId": { "int": {} },
+    "comingSoon": { "boolean": {} },
+    "newTab": { "boolean": {} },
+    "status": { "string": ["publish"] },
+    "link": { "regexp": "https://picsum\\.photos/seed/[0-9]{5}/1920/1080" },
+    "metaDescription": { "string": {} },
+    "metaKeyword": { "string": {} }
+  },
+  "Biller": {
+    "name": { "string": {} },
+    "products": { "hasMany": "Product" }
+  }
 }
