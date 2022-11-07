@@ -1,8 +1,42 @@
 {
-  "Product": {},
+  "Product": {
+    "name": { "string": {} },
+    "description": { "string": {} },
+    "venue": { "string": {} },
+    "type": { "string": [
+              "event",
+              "access-ticket", 
+              "package",
+              "movie"
+        ] 
+    },
+    "status": { "string": [
+                "publish",
+                "draft", 
+                "cancel",
+                "expire"
+          ] 
+    },
+    "stateId": { "int": {} },
+    "city": { "string": {} },
+    "billerId": { "belongsTo": "Biller" },
+    "tickets": { "hasMany": "Ticket" }
+  },
   "Transaction": {},
-  "Ticket": {},
+  "Ticket": {
+    "name": { "string": {} },
+    "description": { "string": {} },
+    "amount": { "int": {} },
+    "quantity": { "int": {} },
+    "sold": { "int": {} },
+    "available": { "int": {} },
+    "productId": {"belongsTo": "Product"},
+    "productType": {"belongsTo": "Product"}
+  },
   "Booking": {},
   "Category": {},
-  "Biller": {}
+  "Biller": {
+    "name": { "string": {} },
+    "products": { "hasMany": "Product" }
+  }
 }
